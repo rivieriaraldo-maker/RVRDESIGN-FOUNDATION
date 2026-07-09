@@ -1,0 +1,120 @@
+/*
+ * RVR Component Library — Base (RVRDESIGN)
+ * RVRDESIGN FOUNDATION · Etapa 04 (roadmap oficial)
+ *
+ * Estilos dos 6 componentes primitivos: RVRButton, RVRCard, RVRBadge,
+ * RVRInput, RVRSection, RVRGrid. Consomem exclusivamente variáveis de
+ * rvr-tokens.css. Nenhuma cor, espaçamento ou fonte declarada aqui.
+ *
+ * Ordem de carregamento: rvr-tokens.css → rvr-typography.css →
+ * rvr-motion.css → rvr-components.css
+ * Path sugerido: /platform/rvrdesign/components/rvr-components.css
+ */
+
+/* ============ RVRButton ============ */
+.rvr-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rvr-space-xs);
+  font-family: var(--rvr-font-interface);
+  font-weight: var(--rvr-fw-semibold);
+  border-radius: var(--rvr-radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition-property: background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: var(--rvr-transition-fast);
+  transition-timing-function: var(--rvr-easing);
+}
+.rvr-button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.rvr-button--sm { padding: var(--rvr-space-xs) var(--rvr-space-md); font-size: var(--rvr-fs-body-sm); }
+.rvr-button--md { padding: var(--rvr-space-sm) var(--rvr-space-lg); font-size: var(--rvr-fs-body); }
+.rvr-button--lg { padding: var(--rvr-space-md) var(--rvr-space-xl); font-size: var(--rvr-fs-body-lg); }
+
+.rvr-button--primary { background-color: var(--rvr-accent); color: var(--rvr-text-primary); }
+.rvr-button--primary:not(:disabled):hover { box-shadow: 0 0 0 1px var(--rvr-accent), 0 0 24px var(--rvr-accent-glow); }
+
+.rvr-button--secondary { background-color: transparent; border-color: var(--rvr-border); color: var(--rvr-text-primary); }
+.rvr-button--secondary:not(:disabled):hover { border-color: var(--rvr-accent); }
+
+.rvr-button--ghost { background-color: transparent; color: var(--rvr-text-secondary); }
+.rvr-button--ghost:not(:disabled):hover { color: var(--rvr-text-primary); background-color: var(--rvr-bg-tertiary); }
+
+/* ============ RVRCard ============ */
+.rvr-card {
+  background-color: var(--rvr-bg-secondary);
+  border: 1px solid var(--rvr-border);
+  border-radius: var(--rvr-radius-lg);
+  box-shadow: var(--rvr-shadow-sm);
+  padding: var(--rvr-space-lg);
+}
+.rvr-card--interactive {
+  cursor: pointer;
+  transition-property: transform, box-shadow;
+  transition-duration: var(--rvr-transition-fast);
+  transition-timing-function: var(--rvr-easing);
+}
+.rvr-card--interactive:hover { transform: translateY(-2px); box-shadow: var(--rvr-shadow-md); }
+.rvr-card__header { margin-bottom: var(--rvr-space-md); }
+.rvr-card__footer { margin-top: var(--rvr-space-md); padding-top: var(--rvr-space-md); border-top: 1px solid var(--rvr-border); }
+
+/* ============ RVRBadge ============ */
+.rvr-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-caption);
+  font-weight: var(--rvr-fw-medium);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: var(--rvr-lh-caption);
+  padding: 2px var(--rvr-space-sm);
+  border-radius: var(--rvr-radius-full);
+}
+.rvr-badge--accent { background-color: rgba(255,255,255,0.06); color: var(--rvr-accent); border: 1px solid var(--rvr-accent); }
+.rvr-badge--neutral { background-color: var(--rvr-bg-tertiary); color: var(--rvr-text-secondary); border: 1px solid var(--rvr-border); }
+
+/* ============ RVRInput ============ */
+.rvr-input-group { display: flex; flex-direction: column; gap: var(--rvr-space-xs); }
+.rvr-input-group__label { font-family: var(--rvr-font-interface); font-size: var(--rvr-fs-body-sm); color: var(--rvr-text-secondary); }
+.rvr-input {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-body);
+  color: var(--rvr-text-primary);
+  background-color: var(--rvr-bg-tertiary);
+  border: 1px solid var(--rvr-border);
+  border-radius: var(--rvr-radius-md);
+  padding: var(--rvr-space-sm) var(--rvr-space-md);
+  transition-property: box-shadow, border-color;
+  transition-duration: var(--rvr-transition-fast);
+  transition-timing-function: var(--rvr-easing);
+}
+.rvr-input::placeholder { color: var(--rvr-text-secondary); }
+.rvr-input:focus-visible {
+  outline: none;
+  border-color: var(--rvr-accent);
+  box-shadow: 0 0 0 2px var(--rvr-bg-primary), 0 0 0 4px var(--rvr-accent);
+}
+.rvr-input:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ============ RVRSection ============ */
+.rvr-section { padding: var(--rvr-space-xl) 0; }
+.rvr-section__title {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-h3);
+  line-height: var(--rvr-lh-h3);
+  font-weight: var(--rvr-fw-semibold);
+  color: var(--rvr-text-primary);
+  margin-bottom: var(--rvr-space-md);
+}
+
+/* ============ RVRGrid — 12 colunas (sem snap/magnetismo, isso é Pilar 8/9) ============ */
+.rvr-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--rvr-space-lg); }
+.rvr-grid > * { grid-column: span 12; }
+@media (min-width: 768px) {
+  .rvr-grid--col-2 > * { grid-column: span 6; }
+  .rvr-grid--col-3 > * { grid-column: span 4; }
+  .rvr-grid--col-4 > * { grid-column: span 3; }
+  }
+
