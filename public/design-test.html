@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RVRDESIGN LAB — Validação Visual</title>
+
+<!--
+  RVRDESIGN LAB (RVRDESIGN-011, Diretriz Oficial RVRDESIGN LAB)
+  Página estática isolada. Servida diretamente de /public/, SEM passar
+  pelo index.html do Portal nem pelo bundle React — zero risco ao
+  ambiente de produção. Não registra eventos em RVR_EVENTS, não
+  depende de Supabase/Orchestrator/módulos de negócio.
+
+  Cobertura: RVRDESIGN-001 (spacing/radius/shadow/transition/breakpoint),
+  RVRDESIGN-009 (typography), RVRDESIGN-010 (component library base),
+  Theme Engine, Motion System.
+
+  Path: /public/design-test.html — acesso esperado: /design-test.html
+-->
+
+<link rel="stylesheet" href="/rvr-tokens.css">
+<link rel="stylesheet" href="/rvr-typography.css">
+<link rel="stylesheet" href="/rvr-motion.css">
+<link rel="stylesheet" href="/rvr-components.css">
+
+<style>
+  body { background: var(--rvr-bg-primary); color: var(--rvr-text-primary); font-family: var(--rvr-font-interface); padding: var(--rvr-space-xl); }
+  .lab-banner { background: var(--rvr-bg-tertiary); border: 1px solid var(--rvr-border); border-radius: var(--rvr-radius-md); padding: var(--rvr-space-md) var(--rvr-space-lg); margin-bottom: var(--rvr-space-xxl); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--rvr-space-md); }
+  .lab-block { margin-bottom: var(--rvr-space-xxl); }
+  .lab-row { display: flex; gap: var(--rvr-space-md); flex-wrap: wrap; align-items: center; margin-bottom: var(--rvr-space-md); }
+  .theme-btn { padding: var(--rvr-space-xs) var(--rvr-space-md); border-radius: var(--rvr-radius-sm); border: 1px solid var(--rvr-border); background: var(--rvr-bg-secondary); color: var(--rvr-text-primary); cursor: pointer; font-family: var(--rvr-font-interface); font-size: var(--rvr-fs-body-sm); }
+  .swatch { width: 20px; height: 20px; border-radius: var(--rvr-radius-full); display: inline-block; margin-right: var(--rvr-space-xs); vertical-align: middle; }
+  .token-swatch { background: var(--rvr-accent); }
+  .token-label { font-family: var(--rvr-font-data); font-size: var(--rvr-fs-caption); color: var(--rvr-text-secondary); margin-top: var(--rvr-space-xs); }
+  .token-item { display: flex; flex-direction: column; align-items: flex-start; }
+  #breakpoint-indicator { font-family: var(--rvr-font-data); }
+</style>
+</head>
+<body>
+
+<div class="lab-banner">
+  <div>
+    <span class="rvr-badge rvr-badge--accent">RVRDESIGN LAB</span>
+    <p class="rvr-text-body-sm rvr-text-secondary" style="margin-top: var(--rvr-space-xs);">
+      Ambiente isolado (RVRDESIGN-011). Não faz parte do bundle do Portal — LAB → VALIDAÇÃO → HOMOLOGAÇÃO → MIGRAÇÃO.
+    </p>
+  </div>
+  <span id="breakpoint-indicator" class="rvr-badge rvr-badge--neutral">carregando...</span>
+</div>
+
+<!-- ============ RVRDESIGN-001 — Spacing ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRDESIGN-001 — Spacing</h2>
+  <div class="lab-row">
+    <div class="token-item"><div class="token-swatch" style="width:var(--rvr-space-xs);height:24px;"></div><span class="token-label">xs · 4px</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:var(--rvr-space-sm);height:24px;"></div><span class="token-label">sm · 8px</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:var(--rvr-space-md);height:24px;"></div><span class="token-label">md · 16px</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:var(--rvr-space-lg);height:24px;"></div><span class="token-label">lg · 24px</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:var(--rvr-space-xl);height:24px;"></div><span class="token-label">xl · 32px</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:var(--rvr-space-xxl);height:24px;"></div><span class="token-label">xxl · 48px</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:var(--rvr-space-xxxl);height:24px;"></div><span class="token-label">xxxl · 64px</span></div>
+  </div>
+</div>
+
+<!-- ============ RVRDESIGN-001 — Radius ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRDESIGN-001 — Radius</h2>
+  <div class="lab-row">
+    <div class="token-item"><div class="token-swatch" style="width:48px;height:48px;border-radius:var(--rvr-radius-sm);"></div><span class="token-label">sm · 4px</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:48px;height:48px;border-radius:var(--rvr-radius-md);"></div><span class="token-label">md · 8px</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:48px;height:48px;border-radius:var(--rvr-radius-lg);"></div><span class="token-label">lg · 16px</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:48px;height:48px;border-radius:var(--rvr-radius-full);"></div><span class="token-label">full</span></div>
+  </div>
+</div>
+
+<!-- ============ RVRDESIGN-001 — Shadow ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRDESIGN-001 — Shadow</h2>
+  <div class="lab-row">
+    <div class="token-item"><div style="width:80px;height:48px;background:var(--rvr-bg-secondary);border-radius:var(--rvr-radius-md);box-shadow:var(--rvr-shadow-sm);"></div><span class="token-label">sm</span></div>
+    <div class="token-item"><div style="width:80px;height:48px;background:var(--rvr-bg-secondary);border-radius:var(--rvr-radius-md);box-shadow:var(--rvr-shadow-md);"></div><span class="token-label">md</span></div>
+    <div class="token-item"><div style="width:80px;height:48px;background:var(--rvr-bg-secondary);border-radius:var(--rvr-radius-md);box-shadow:var(--rvr-shadow-lg);"></div><span class="token-label">lg</span></div>
+  </div>
+</div>
+
+<!-- ============ RVRDESIGN-001 — Transition ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRDESIGN-001 — Transition (passe o mouse)</h2>
+  <div class="lab-row">
+    <div class="token-item"><div class="token-swatch" style="width:64px;height:24px;transition-property:transform;transition-duration:var(--rvr-transition-fast);" onmouseenter="this.style.transform='scale(1.4)'" onmouseleave="this.style.transform='scale(1)'"></div><span class="token-label">fast · 120ms</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:64px;height:24px;transition-property:transform;transition-duration:var(--rvr-transition-base);" onmouseenter="this.style.transform='scale(1.4)'" onmouseleave="this.style.transform='scale(1)'"></div><span class="token-label">base · 200ms</span></div>
+    <div class="token-item"><div class="token-swatch" style="width:64px;height:24px;transition-property:transform;transition-duration:var(--rvr-transition-slow);" onmouseenter="this.style.transform='scale(1.4)'" onmouseleave="this.style.transform='scale(1)'"></div><span class="token-label">slow · 320ms</span></div>
+  </div>
+</div>
+
+<!-- ============ Theme switcher ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">Theme Engine — Premium Accent System</h2>
+  <p class="rvr-text-body-sm rvr-text-secondary" style="margin-bottom:var(--rvr-space-sm);">Troca via RVR_THEME_ENGINE apenas — nenhuma lógica paralela.</p>
+  <div class="lab-row">
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('verde-petroleo')"><span class="swatch" style="background:#004D4D"></span>Verde Petróleo</button>
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('electric-gold')"><span class="swatch" style="background:#D4AF37"></span>Electric Gold</button>
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('titanium-cyan')"><span class="swatch" style="background:#00A3E0"></span>Titanium Cyan</button>
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('copper-charge')"><span class="swatch" style="background:#D76B00"></span>Copper Charge</button>
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('amethyst-night')"><span class="swatch" style="background:#6F2DA8"></span>Amethyst Night</button>
+  </div>
+</div>
+
+<!-- ============ Typography ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRDESIGN-009 — Typography (legibilidade / hierarquia / densidade)</h2>
+  <p class="rvr-text-display">Display — Tenor Sans</p>
+  <p class="rvr-text-h1">Heading 1</p>
+  <p class="rvr-text-h2">Heading 2</p>
+  <p class="rvr-text-h3">Heading 3</p>
+  <p class="rvr-text-h4">Heading 4</p>
+  <p class="rvr-text-body-lg">Body Large — texto corrido de exemplo.</p>
+  <p class="rvr-text-body">Body — texto corrido de exemplo.</p>
+  <p class="rvr-text-body-sm">Body Small — texto corrido de exemplo.</p>
+  <p class="rvr-text-caption">Caption / label</p>
+  <p class="rvr-text-data">R$ 1.234,56 — dado numérico (DM Mono)</p>
+  <p class="rvr-text-data-lg">R$ 1.234,56 — dado numérico grande (DM Mono)</p>
+</div>
+
+<!-- ============ Motion ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">Motion System</h2>
+  <div class="lab-row">
+    <div class="rvr-card rvr-hover-lift" style="width:140px;">hover-lift</div>
+    <div class="rvr-card rvr-hover-glow" style="width:140px;">hover-glow</div>
+    <input class="rvr-input rvr-focus-ring" placeholder="focus-ring (clique)">
+    <button class="rvr-button rvr-button--secondary rvr-button--md rvr-active-scale">active-scale (clique)</button>
+  </div>
+</div>
+
+<!-- ============ RVRDESIGN-010 — Component Library Base ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRDESIGN-010 — Component Library Base</h2>
+
+  <p class="rvr-text-caption">RVRButton — variantes / tamanhos / disabled</p>
+  <div class="lab-row">
+    <button class="rvr-button rvr-button--primary rvr-button--sm rvr-active-scale">Primary sm</button>
+    <button class="rvr-button rvr-button--primary rvr-button--md rvr-active-scale">Primary md</button>
+    <button class="rvr-button rvr-button--primary rvr-button--lg rvr-active-scale">Primary lg</button>
+    <button class="rvr-button rvr-button--secondary rvr-button--md rvr-active-scale">Secondary</button>
+    <button class="rvr-button rvr-button--ghost rvr-button--md rvr-active-scale">Ghost</button>
+    <button class="rvr-button rvr-button--primary rvr-button--md" disabled>Disabled</button>
+  </div>
+
+  <p class="rvr-text-caption">RVRCard — padrão / interativo / elevação (sm · md · lg)</p>
+  <div class="lab-row">
+    <div class="rvr-card" style="width:200px;">Card padrão</div>
+    <div class="rvr-card rvr-card--interactive" style="width:200px;">Card interativo (hover)</div>
+    <div class="rvr-card" style="width:140px;box-shadow:var(--rvr-shadow-sm);">shadow sm</div>
+    <div class="rvr-card" style="width:140px;box-shadow:var(--rvr-shadow-md);">shadow md</div>
+    <div class="rvr-card" style="width:140px;box-shadow:var(--rvr-shadow-lg);">shadow lg</div>
+  </div>
+
+  <p class="rvr-text-caption">RVRBadge — accent / neutral</p>
+  <div class="lab-row">
+    <span class="rvr-badge rvr-badge--accent">Accent</span>
+    <span class="rvr-badge rvr-badge--neutral">Neutral</span>
+  </div>
+
+  <p class="rvr-text-caption">RVRInput — normal / focus / disabled</p>
+  <div class="lab-row">
+    <div class="rvr-input-group">
+      <label class="rvr-input-group__label">Nome</label>
+      <input class="rvr-input rvr-focus-ring" placeholder="Digite aqui (clique = focus)">
+    </div>
+    <input class="rvr-input rvr-focus-ring" placeholder="Sem label" disabled>
+  </div>
+
+  <p class="rvr-text-caption">RVRSection — espaçamento vertical / agrupamento</p>
+  <section class="rvr-section" style="border:1px dashed var(--rvr-border);">
+    <h3 class="rvr-section__title">Título da seção</h3>
+    <p class="rvr-text-body">Conteúdo agrupado dentro do RVRSection, com padding vertical do token space-xl aplicado acima e abaixo.</p>
+  </section>
+
+  <p class="rvr-text-caption">RVRGrid — 1 / 2 / 3 colunas (responsivo ≥768px)</p>
+  <div class="rvr-grid" style="margin-bottom:var(--rvr-space-md);">
+    <div class="rvr-card">1 coluna (padrão &lt;768px)</div>
+  </div>
+  <div class="rvr-grid rvr-grid--col-2" style="margin-bottom:var(--rvr-space-md);">
+    <div class="rvr-card">Col 1</div>
+    <div class="rvr-card">Col 2</div>
+  </div>
+  <div class="rvr-grid rvr-grid--col-3">
+    <div class="rvr-card">Col 1</div>
+    <div class="rvr-card">Col 2</div>
+    <div class="rvr-card">Col 3</div>
+  </div>
+</div>
+
+<script src="/rvr-tokens.js"></script>
+<script src="/rvr-theme-engine.js"></script>
+<script>
+  // Indicador de breakpoint — validação visual apenas, não é engine.
+  function updateBreakpoint() {
+    var w = window.innerWidth;
+    var label = w < 768 ? 'mobile (<768px)' : (w < 1024 ? 'tablet (768–1023px)' : 'desktop (≥1024px)');
+    var el = document.getElementById('breakpoint-indicator');
+    if (el) el.textContent = label + ' · ' + w + 'px';
+  }
+  window.addEventListener('resize', updateBreakpoint);
+  updateBreakpoint();
+</script>
+</body>
+</html>
