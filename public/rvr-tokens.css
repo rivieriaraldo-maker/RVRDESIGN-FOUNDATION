@@ -1,0 +1,101 @@
+/*
+ * RVR_TOKENS — CSS Custom Properties (RVRDESIGN)
+ * RVRDESIGN FOUNDATION · Etapa 01
+ * Ver RVRDESIGN-REGISTRO-HOMOLOGACAO.md (RVRDESIGN-001, RVRDESIGN-002)
+ *
+ * Espelha rvr-tokens.js. Fonte de verdade dos VALORES é o .js;
+ * este arquivo é mantido em sincronia manual até existir build step.
+ *
+ * Path sugerido no repo: /platform/rvrdesign/tokens/rvr-tokens.css
+ */
+
+:root {
+  /* Base fixa — nunca sobrescrita por tema */
+  --rvr-bg-primary: #000000;
+  --rvr-bg-secondary: #0D0D0D;
+  --rvr-bg-tertiary: #1A1A1A;
+  --rvr-text-primary: #FFFFFF;
+  --rvr-text-secondary: #A7A7A7;
+  --rvr-border: rgba(255,255,255,0.08);
+
+  /* Tipografia */
+  --rvr-font-display: 'Tenor Sans', serif;
+  --rvr-font-interface: 'Inter', sans-serif;
+  --rvr-font-data: 'DM Mono', monospace;
+
+  /* Escala tipográfica — proposta (RVRDESIGN-009), aguardando homologação */
+  --rvr-fs-display: 40px; --rvr-lh-display: 48px;
+  --rvr-fs-h1: 32px; --rvr-lh-h1: 40px;
+  --rvr-fs-h2: 24px; --rvr-lh-h2: 32px;
+  --rvr-fs-h3: 20px; --rvr-lh-h3: 28px;
+  --rvr-fs-h4: 18px; --rvr-lh-h4: 26px;
+  --rvr-fs-body-lg: 16px; --rvr-lh-body-lg: 24px;
+  --rvr-fs-body: 14px; --rvr-lh-body: 20px;
+  --rvr-fs-body-sm: 12px; --rvr-lh-body-sm: 18px;
+  --rvr-fs-caption: 11px; --rvr-lh-caption: 16px;
+  --rvr-fs-data: 14px; --rvr-lh-data: 20px;
+  --rvr-fs-data-lg: 18px; --rvr-lh-data-lg: 24px;
+
+  --rvr-fw-regular: 400;
+  --rvr-fw-medium: 500;
+  --rvr-fw-semibold: 600;
+  --rvr-fw-bold: 700;
+
+  /* Espaçamento — proposta, aguardando homologação */
+  --rvr-space-xs: 4px;
+  --rvr-space-sm: 8px;
+  --rvr-space-md: 16px;
+  --rvr-space-lg: 24px;
+  --rvr-space-xl: 32px;
+  --rvr-space-xxl: 48px;
+  --rvr-space-xxxl: 64px;
+
+  /* Bordas */
+  --rvr-radius-sm: 4px;
+  --rvr-radius-md: 8px;
+  --rvr-radius-lg: 16px;
+  --rvr-radius-full: 9999px;
+
+  /* Sombras */
+  --rvr-shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --rvr-shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --rvr-shadow-lg: 0 12px 32px rgba(0,0,0,0.6);
+
+  /* Transições */
+  --rvr-transition-fast: 120ms;
+  --rvr-transition-base: 200ms;
+  --rvr-transition-slow: 320ms;
+  --rvr-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Accent padrão (fallback = Verde Petróleo) */
+  --rvr-accent: #004D4D;
+  --rvr-accent-glow: rgba(0,77,77,.35);
+}
+
+/* ---- Premium Accent System — ativado via [data-rvr-theme] no <html> ---- */
+/* Troca de tema é responsabilidade do Theme Engine (Etapa 02) */
+
+[data-rvr-theme="verde-petroleo"] {
+  --rvr-accent: #004D4D;
+  --rvr-accent-glow: rgba(0,77,77,.35);
+}
+
+[data-rvr-theme="electric-gold"] {
+  --rvr-accent: #D4AF37;
+  --rvr-accent-glow: rgba(212,175,55,.35);
+}
+
+[data-rvr-theme="titanium-cyan"] {
+  --rvr-accent: #00A3E0;
+  --rvr-accent-glow: rgba(0,163,224,.35);
+}
+
+[data-rvr-theme="copper-charge"] {
+  --rvr-accent: #D76B00;
+  --rvr-accent-glow: rgba(215,107,0,.35);
+}
+
+[data-rvr-theme="amethyst-night"] {
+  --rvr-accent: #6F2DA8;
+  --rvr-accent-glow: rgba(111,45,168,.35);
+}
