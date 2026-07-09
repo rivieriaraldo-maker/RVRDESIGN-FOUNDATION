@@ -1,0 +1,81 @@
+/*
+ * RVR Motion System (RVRDESIGN)
+ * RVRDESIGN FOUNDATION · Etapa 03
+ *
+ * Linguagem visual premium, fluida, precisa.
+ * Permitido: opacity; transform; transition.
+ * Proibido: animações exageradas, efeitos arcade, movimentos bruscos.
+ *
+ * Consome exclusivamente os tokens de rvr-tokens.css
+ * (--rvr-transition-*, --rvr-easing, --rvr-shadow-*, --rvr-accent*).
+ * Nenhum componente declara transition/duration própria fora daqui.
+ *
+ * Requer: rvr-tokens.css carregado antes deste arquivo.
+ * Path sugerido: /platform/rvrdesign/motion/rvr-motion.css
+ */
+
+/* ---- Utilitários base de transição ---- */
+.rvr-transition-fast { transition-duration: var(--rvr-transition-fast); transition-timing-function: var(--rvr-easing); }
+.rvr-transition-base { transition-duration: var(--rvr-transition-base); transition-timing-function: var(--rvr-easing); }
+.rvr-transition-slow { transition-duration: var(--rvr-transition-slow); transition-timing-function: var(--rvr-easing); }
+
+/* ---- Fade (opacity) ---- */
+.rvr-fade-in {
+  opacity: 0;
+  animation: rvr-fade-in var(--rvr-transition-base) var(--rvr-easing) forwards;
+}
+@keyframes rvr-fade-in { to { opacity: 1; } }
+
+.rvr-fade-out {
+  opacity: 1;
+  animation: rvr-fade-out var(--rvr-transition-base) var(--rvr-easing) forwards;
+}
+@keyframes rvr-fade-out { to { opacity: 0; } }
+
+/* ---- Micro-interações de hover/focus (transform + opacity apenas) ---- */
+.rvr-hover-lift {
+  transition-property: transform, box-shadow;
+  transition-duration: var(--rvr-transition-fast);
+  transition-timing-function: var(--rvr-easing);
+}
+.rvr-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--rvr-shadow-md);
+}
+
+.rvr-hover-glow {
+  transition-property: box-shadow;
+  transition-duration: var(--rvr-transition-fast);
+  transition-timing-function: var(--rvr-easing);
+}
+.rvr-hover-glow:hover {
+  box-shadow: 0 0 0 1px var(--rvr-accent), 0 0 24px var(--rvr-accent-glow);
+}
+
+.rvr-focus-ring {
+  transition-property: box-shadow;
+  transition-duration: var(--rvr-transition-fast);
+  transition-timing-function: var(--rvr-easing);
+}
+.rvr-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--rvr-bg-primary), 0 0 0 4px var(--rvr-accent);
+}
+
+/* ---- Escala sutil para estados ativos (botões, cards clicáveis) ---- */
+.rvr-active-scale:active {
+  transform: scale(0.98);
+}
+
+/* ---- Acessibilidade: respeita preferência do usuário ---- */
+@media (prefers-reduced-motion: reduce) {
+  .rvr-fade-in,
+  .rvr-fade-out,
+  .rvr-hover-lift,
+  .rvr-hover-glow,
+  .rvr-focus-ring,
+  .rvr-active-scale {
+    animation: none !important;
+    transition: none !important;
+  }
+}
