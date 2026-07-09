@@ -1,0 +1,112 @@
+/*
+ * RVR Typography System (RVRDESIGN)
+ * RVRDESIGN FOUNDATION · Etapa 03
+ *
+ * Classes utilitárias de tipografia. Consomem exclusivamente as
+ * variáveis de rvr-tokens.css (--rvr-font-*, --rvr-fs-*, --rvr-lh-*,
+ * --rvr-fw-*). Nenhum componente declara font-size, line-height ou
+ * font-family própria fora daqui.
+ *
+ * Carregamento de fontes: Tenor Sans, Inter e DM Mono não são
+ * fontes do sistema — precisam ser carregadas (Google Fonts ou
+ * self-hosted). Nenhum @import foi adicionado aqui para não travar
+ * a decisão de performance/licenciamento por você; ver nota no
+ * rodapé deste arquivo.
+ *
+ * Requer: rvr-tokens.css carregado antes deste arquivo.
+ * Path sugerido: /platform/rvrdesign/typography/rvr-typography.css
+ */
+
+.rvr-text-display {
+  font-family: var(--rvr-font-display);
+  font-size: var(--rvr-fs-display);
+  line-height: var(--rvr-lh-display);
+  font-weight: var(--rvr-fw-regular);
+}
+
+.rvr-text-h1 {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-h1);
+  line-height: var(--rvr-lh-h1);
+  font-weight: var(--rvr-fw-semibold);
+}
+
+.rvr-text-h2 {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-h2);
+  line-height: var(--rvr-lh-h2);
+  font-weight: var(--rvr-fw-semibold);
+}
+
+.rvr-text-h3 {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-h3);
+  line-height: var(--rvr-lh-h3);
+  font-weight: var(--rvr-fw-semibold);
+}
+
+.rvr-text-h4 {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-h4);
+  line-height: var(--rvr-lh-h4);
+  font-weight: var(--rvr-fw-semibold);
+}
+
+.rvr-text-body-lg {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-body-lg);
+  line-height: var(--rvr-lh-body-lg);
+  font-weight: var(--rvr-fw-regular);
+}
+
+.rvr-text-body {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-body);
+  line-height: var(--rvr-lh-body);
+  font-weight: var(--rvr-fw-regular);
+}
+
+.rvr-text-body-sm {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-body-sm);
+  line-height: var(--rvr-lh-body-sm);
+  font-weight: var(--rvr-fw-regular);
+}
+
+.rvr-text-caption {
+  font-family: var(--rvr-font-interface);
+  font-size: var(--rvr-fs-caption);
+  line-height: var(--rvr-lh-caption);
+  font-weight: var(--rvr-fw-medium);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ---- Dados numéricos / KPIs (DM Mono) ---- */
+.rvr-text-data {
+  font-family: var(--rvr-font-data);
+  font-size: var(--rvr-fs-data);
+  line-height: var(--rvr-lh-data);
+  font-weight: var(--rvr-fw-medium);
+}
+
+.rvr-text-data-lg {
+  font-family: var(--rvr-font-data);
+  font-size: var(--rvr-fs-data-lg);
+  line-height: var(--rvr-lh-data-lg);
+  font-weight: var(--rvr-fw-medium);
+}
+
+/* ---- Cor de texto (referencia base fixa, nunca alterada por tema) ---- */
+.rvr-text-primary { color: var(--rvr-text-primary); }
+.rvr-text-secondary { color: var(--rvr-text-secondary); }
+
+/*
+ * NOTA — carregamento de fontes (decisão pendente, não é registro
+ * formal, apenas observação técnica):
+ * Opção A: Google Fonts via <link> no <head>
+ *   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+ * Opção B: self-hosted (@font-face) — melhor para performance/LGPD,
+ *   requer os arquivos de fonte no repositório.
+ * Nenhuma das duas foi aplicada; aguardando sua preferência.
+ */
