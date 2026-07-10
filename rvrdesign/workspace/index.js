@@ -11,6 +11,12 @@ export { RVR_WORKSPACE_REGISTRY, getRegistryEntry, isRegistered } from './RVRWor
 export { RVR_WORKSPACE_PRESETS, getPreset } from './RVRWorkspacePresets.js';
 export { CONTRACT_STUBS } from './RVRWorkspaceContracts.js';
 
+// ---- Etapa 08 — IKEA Foundation (RVRDESIGN-020) ----
+export { clampSpan, getColumnSpanStyle, computeGridPosition } from './RVRGridEngine.js';
+export { snapToGrid, nearestColumnSpan } from './RVRSnapSystem.js';
+export { computeLayout } from './RVRLayoutEngine.js';
+export { validateSlotAssignment } from './RVRComponentSlots.js';
+export { useRVRSelectionLayer } from './RVRSelectionLayer.js';
 export { clampSpan, getColumnSpanStyle, computeGridPosition } from './ikea/RVRGridEngine.js';
 export { snapToGrid, nearestColumnSpan } from './ikea/RVRSnapSystem.js';
 export { computeLayout } from './ikea/RVRLayoutEngine.js';
