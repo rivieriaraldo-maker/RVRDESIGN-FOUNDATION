@@ -44,3 +44,10 @@
 /* Marcação preparatória para IKEA Foundation (seleção/snap futuros) —
    apenas atributo de dados, nenhum comportamento implementado aqui. */
 [data-rvr-workspace-grid] { /* hook point, sem estilo próprio */ }
+/* RVRDESIGN-020 — IKEA Foundation */
+/* Estado visual de seleção */
+
+.rvr-workspace-block--selected {
+  outline: 2px solid var(--rvr-accent);
+  outline-offset: 4px;
+}
