@@ -23,12 +23,14 @@
   }
 
   // Mapa entre chave do token (camelCase) e valor do atributo data-rvr-theme (kebab-case)
+  // RVRDESIGN-012 (09/07/2026): "vermelho" adicionado como 6ª cor
   var THEME_MAP = Object.freeze({
     'verde-petroleo': 'verdePetroleo',
     'electric-gold': 'electricGold',
     'titanium-cyan': 'titaniumCyan',
     'copper-charge': 'copperCharge',
-    'amethyst-night': 'amethystNight'
+    'amethyst-night': 'amethystNight',
+    'vermelho': 'vermelho'
   });
 
   var DEFAULT_THEME = 'verde-petroleo';
