@@ -1,10 +1,16 @@
 /**
  * RVR_TOKENS — Token Engine (RVRDESIGN)
- * RVRDESIGN FOUNDATION · Etapa 01 (base) + Etapa 03 (escala tipográfica)
+ * RVRDESIGN FOUNDATION · Etapa 01 (base) + Etapa 03 (tipografia) + RVRDESIGN-012 (paleta revisada)
  * Homologado com Registro RVRDESIGN-001 (spacing/radius/shadow/transition/
  * breakpoint pendentes de validação visual) e RVRDESIGN-009 (escala
  * tipográfica pendente de validação visual). RVRDESIGN-002 (accent Verde
  * Petróleo) RESOLVIDO — #004D4D é o valor oficial.
+ * RVRDESIGN-012 (09/07/2026, revisado): electricGold, titaniumCyan e
+ * amethystNight tiveram o `base`/`glow` atualizados. Copper Charge
+ * mantido no valor original (#D76B00) — a divergência de nomenclatura
+ * foi resolvida como uma 6ª cor nova: `vermelho` (#580305), e não como
+ * substituição do Copper Charge. Premium Accent System passa de 5 para
+ * 6 temas.
  * Ver RVRDESIGN-REGISTRO-HOMOLOGACAO.md.
  *
  * Fonte única da verdade para cores, tipografia, espaçamento,
@@ -23,7 +29,7 @@
   'use strict';
 
   var RVR_TOKENS = Object.freeze({
-    version: '1.1.0',
+    version: '1.3.0',
 
     // ---- Identidade base (Dark Premium) — fixa, nunca alterada por tema ----
     color: Object.freeze({
@@ -36,13 +42,14 @@
         border: 'rgba(255,255,255,0.08)'
       }),
 
-      // ---- Premium Accent System — 5 temas homologados na diretriz ----
+      // ---- Premium Accent System — 6 temas (RVRDESIGN-012: Vermelho adicionado 09/07/2026) ----
       accent: Object.freeze({
         verdePetroleo: Object.freeze({ base: '#004D4D', glow: 'rgba(0,77,77,.35)' }),
-        electricGold: Object.freeze({ base: '#D4AF37', glow: 'rgba(212,175,55,.35)' }),
-        titaniumCyan: Object.freeze({ base: '#00A3E0', glow: 'rgba(0,163,224,.35)' }),
+        electricGold: Object.freeze({ base: '#7A7539', glow: 'rgba(122,117,57,.35)' }),
+        titaniumCyan: Object.freeze({ base: '#065E9E', glow: 'rgba(6,94,158,.35)' }),
         copperCharge: Object.freeze({ base: '#D76B00', glow: 'rgba(215,107,0,.35)' }),
-        amethystNight: Object.freeze({ base: '#6F2DA8', glow: 'rgba(111,45,168,.35)' })
+        amethystNight: Object.freeze({ base: '#1F083C', glow: 'rgba(31,8,60,.35)' }),
+        vermelho: Object.freeze({ base: '#580305', glow: 'rgba(88,3,5,.35)' })
       })
     }),
 
@@ -138,4 +145,4 @@
     }
   }
 })();
-        
+  
