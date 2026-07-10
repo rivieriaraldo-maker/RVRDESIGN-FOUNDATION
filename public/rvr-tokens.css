@@ -74,6 +74,7 @@
 
 /* ---- Premium Accent System — ativado via [data-rvr-theme] no <html> ---- */
 /* Troca de tema é responsabilidade do Theme Engine (Etapa 02) */
+/* RVRDESIGN-012 (09/07/2026, revisado): Vermelho é 6ª cor nova; Copper Charge revertido ao original */
 
 [data-rvr-theme="verde-petroleo"] {
   --rvr-accent: #004D4D;
@@ -81,13 +82,13 @@
 }
 
 [data-rvr-theme="electric-gold"] {
-  --rvr-accent: #D4AF37;
-  --rvr-accent-glow: rgba(212,175,55,.35);
+  --rvr-accent: #7A7539;
+  --rvr-accent-glow: rgba(122,117,57,.35);
 }
 
 [data-rvr-theme="titanium-cyan"] {
-  --rvr-accent: #00A3E0;
-  --rvr-accent-glow: rgba(0,163,224,.35);
+  --rvr-accent: #065E9E;
+  --rvr-accent-glow: rgba(6,94,158,.35);
 }
 
 [data-rvr-theme="copper-charge"] {
@@ -96,6 +97,11 @@
 }
 
 [data-rvr-theme="amethyst-night"] {
-  --rvr-accent: #6F2DA8;
-  --rvr-accent-glow: rgba(111,45,168,.35);
+  --rvr-accent: #1F083C;
+  --rvr-accent-glow: rgba(31,8,60,.35);
+}
+
+[data-rvr-theme="vermelho"] {
+  --rvr-accent: #580305;
+  --rvr-accent-glow: rgba(88,3,5,.35);
 }
