@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RVRDESIGN LAB — Workspace Engine (Etapa 07)</title>
+
+<!--
+  design-workspace-test.html — Etapa 07 (RVRDESIGN-018)
+  Página estática isolada, mesmo padrão de design-test.html e
+  design-chart-test.html. Sem React, sem bundle, sem Portal. Valida
+  as classes CSS do Workspace (.rvr-workspace, .rvr-workspace-block,
+  .rvr-workspace-slot--empty) reaproveitando .rvr-grid existente.
+  Path sugerido: /public/design-workspace-test.html
+-->
+
+<link rel="stylesheet" href="/rvr-tokens.css">
+<link rel="stylesheet" href="/rvr-typography.css">
+<link rel="stylesheet" href="/rvr-motion.css">
+<link rel="stylesheet" href="/rvr-components.css">
+<link rel="stylesheet" href="/rvr-workspace.css">
+
+<style>
+  body { background: var(--rvr-bg-primary); color: var(--rvr-text-primary); font-family: var(--rvr-font-interface); padding: var(--rvr-space-xl); }
+  .lab-banner { background: var(--rvr-bg-tertiary); border: 1px solid var(--rvr-border); border-radius: var(--rvr-radius-md); padding: var(--rvr-space-md) var(--rvr-space-lg); margin-bottom: var(--rvr-space-xxl); }
+  .lab-block { margin-bottom: var(--rvr-space-xxl); }
+  .theme-btn { padding: var(--rvr-space-xs) var(--rvr-space-md); border-radius: var(--rvr-radius-sm); border: 1px solid var(--rvr-border); background: var(--rvr-bg-secondary); color: var(--rvr-text-primary); cursor: pointer; font-family: var(--rvr-font-interface); font-size: var(--rvr-fs-body-sm); margin-right: var(--rvr-space-sm); }
+  .preset-btn.is-active { border-color: var(--rvr-accent); }
+</style>
+</head>
+<body>
+
+<div class="lab-banner">
+  <span class="rvr-badge rvr-badge--accent">RVRDESIGN LAB — Workspace Engine</span>
+  <p class="rvr-text-body-sm rvr-text-secondary" style="margin-top: var(--rvr-space-xs);">
+    Ambiente isolado (Etapa 07, RVRDESIGN-018). Sem drag-and-drop, sem IA,
+    sem regra de negócio — apenas organização visual. Reaproveita .rvr-grid,
+    RVRCard e Theme Engine já homologados.
+  </p>
+</div>
+
+<div class="lab-block">
+  <h2 class="rvr-text-h2">Presets (estrutural — só troca o badge, sem lógica de dados)</h2>
+  <div>
+    <button class="theme-btn preset-btn is-active" data-preset="Padrão RVR" onclick="setPreset(this)">Padrão RVR</button>
+    <button class="theme-btn preset-btn" data-preset="Showroom" onclick="setPreset(this)">Showroom</button>
+    <button class="theme-btn preset-btn" data-preset="Consultor Digital" onclick="setPreset(this)">Consultor Digital</button>
+    <button class="theme-btn preset-btn" data-preset="Especialista Técnico" onclick="setPreset(this)">Especialista Técnico</button>
+    <button class="theme-btn preset-btn" data-preset="Gestor" onclick="setPreset(this)">Gestor</button>
+    <button class="theme-btn preset-btn" data-preset="Livre" onclick="setPreset(this)">Livre</button>
+  </div>
+</div>
+
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRWorkspace + RVRWorkspaceGrid + RVRWorkspaceBlock</h2>
+
+  <div class="rvr-workspace">
+    <span class="rvr-badge rvr-badge--neutral" id="preset-label" style="align-self:flex-start;">Padrão RVR</span>
+
+    <div class="rvr-grid rvr-grid--col-3" data-rvr-workspace-grid="true">
+      <div class="rvr-workspace-block" style="grid-column: span 6;">
+        <div class="rvr-card">
+          <p class="rvr-text-caption">kpi-vendas · span 6</p>
+          <p class="rvr-text-h3">Bloco de exemplo</p>
+        </div>
+      </div>
+      <div class="rvr-workspace-block" style="grid-column: span 3;">
+        <div class="rvr-card">
+          <p class="rvr-text-caption">indicador-1 · span 3</p>
+        </div>
+      </div>
+      <div class="rvr-workspace-block" style="grid-column: span 3;">
+        <div class="rvr-card">
+          <p class="rvr-text-caption">indicador-2 · span 3</p>
+        </div>
+      </div>
+
+      <!-- RVRWorkspaceSlot vazio -->
+      <div class="rvr-workspace-slot--empty" style="grid-column: span 6;">
+        <span class="rvr-text-caption">dashboard-principal</span>
+        <span class="rvr-text-body-sm rvr-text-secondary">aceita: rvr-chart, rvr-card</span>
+      </div>
+
+      <!-- Bloco oculto (visible=false → no React não seria montado; aqui simulado com a classe) -->
+      <div class="rvr-workspace-block rvr-workspace-block--hidden" style="grid-column: span 6;">
+        <div class="rvr-card">Este bloco está oculto (visible=false)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/rvr-tokens.js"></script>
+<script src="/rvr-theme-engine.js"></script>
+<script>
+  function setPreset(btn) {
+    document.querySelectorAll('.preset-btn').forEach(function (b) { b.classList.remove('is-active'); });
+    btn.classList.add('is-active');
+    document.getElementById('preset-label').textContent = btn.dataset.preset;
+  }
+</script>
+</body>
+</html>
+
