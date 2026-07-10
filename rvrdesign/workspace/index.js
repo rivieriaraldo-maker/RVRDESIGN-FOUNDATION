@@ -1,3 +1,5 @@
+
+<! index com projeto ikea>
 /**
  * RVRDESIGN Workspace Engine — barrel export
  * RVRDESIGN FOUNDATION · Etapa 07 + Etapa 08
@@ -54,3 +56,4 @@ export {
 export {
   useRVRSelectionLayer
 } from './ikea/RVRSelectionLayer.js';
+<!index com projeto ikea>
