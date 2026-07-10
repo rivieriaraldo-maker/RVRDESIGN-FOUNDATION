@@ -1,0 +1,46 @@
+/*
+ * RVR Workspace Engine — CSS (RVRDESIGN)
+ * RVRDESIGN FOUNDATION · Etapa 07 (RVRDESIGN-018)
+ *
+ * Reaproveita .rvr-grid / .rvr-grid--col-* de rvr-components.css —
+ * proibido CSS paralelo (regra explícita da diretriz). Este arquivo
+ * só adiciona o que não existe: chrome do bloco/slot e o estado
+ * de visibilidade. Nenhuma cor/espaçamento fora dos tokens.
+ *
+ * Ordem de carregamento: rvr-tokens.css → rvr-typography.css →
+ * rvr-motion.css → rvr-components.css → rvr-workspace.css
+ * Path sugerido: /public/rvr-workspace.css
+ */
+
+.rvr-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rvr-space-lg);
+}
+
+/* Bloco posicionável — position/order vêm via style inline (props),
+   nunca hardcoded aqui. Visual do bloco em si é o RVRCard reaproveitado. */
+.rvr-workspace-block {
+  min-width: 0;
+}
+.rvr-workspace-block--hidden {
+  display: none;
+}
+
+/* Slot vazio — placeholder até receber um bloco real */
+.rvr-workspace-slot--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rvr-space-xs);
+  min-height: 96px;
+  border: 1px dashed var(--rvr-border);
+  border-radius: var(--rvr-radius-lg);
+  color: var(--rvr-text-secondary);
+  padding: var(--rvr-space-lg);
+}
+
+/* Marcação preparatória para IKEA Foundation (seleção/snap futuros) —
+   apenas atributo de dados, nenhum comportamento implementado aqui. */
+[data-rvr-workspace-grid] { /* hook point, sem estilo próprio */ }
