@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>RVRDESIGN LAB — Chart System Foundation (Etapa 06)</title>
+
+<!--
+  RVRDESIGN LAB — Chart System Foundation
+  Etapa 06 / RVRDESIGN-017
+
+  Página estática isolada.
+  Servida diretamente de /public/.
+  
+  Não utiliza:
+  - React
+  - Bundle Vite
+  - Portal
+  - RVR_EVENTS
+  - dados reais
+  - bibliotecas gráficas externas
+
+  Objetivo:
+  Homologação visual da infraestrutura Chart System.
+
+  Cobertura:
+  - RVRChartContainer
+  - RVRChartTitle
+  - RVRLegend
+  - RVRGridLines
+  - RVRAxis
+  - RVRTooltip
+  - RVRSeries
+  - Theme Engine
+  - ResizeObserver
+
+  Path:
+  /public/design-chart-test.html
+-->
+
+<link rel="stylesheet" href="/rvr-tokens.css">
+<link rel="stylesheet" href="/rvr-typography.css">
+<link rel="stylesheet" href="/rvr-motion.css">
+<link rel="stylesheet" href="/rvr-components.css">
+<link rel="stylesheet" href="/rvr-chart.css">
+
+<style>
+body {
+  background: var(--rvr-bg-primary);
+  color: var(--rvr-text-primary);
+  font-family: var(--rvr-font-interface);
+  padding: var(--rvr-space-xl);
+}
+
+.lab-banner {
+  background: var(--rvr-bg-tertiary);
+  border: 1px solid var(--rvr-border);
+  border-radius: var(--rvr-radius-md);
+  padding: var(--rvr-space-md) var(--rvr-space-lg);
+  margin-bottom: var(--rvr-space-xxl);
+}
+
+.lab-block {
+  margin-bottom: var(--rvr-space-xxl);
+}
+
+.lab-row {
+  display:flex;
+  gap:var(--rvr-space-md);
+  flex-wrap:wrap;
+  align-items:flex-start;
+}
+
+.theme-btn {
+  padding:var(--rvr-space-xs) var(--rvr-space-md);
+  border-radius:var(--rvr-radius-sm);
+  border:1px solid var(--rvr-border);
+  background:var(--rvr-bg-secondary);
+  color:var(--rvr-text-primary);
+  cursor:pointer;
+}
+
+.chart-demo {
+  width:320px;
+  height:180px;
+  position:relative;
+}
+
+#resize-info {
+  margin-top:var(--rvr-space-sm);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="lab-banner">
+  <span class="rvr-badge rvr-badge--accent">
+    RVRDESIGN LAB — Chart System Foundation
+  </span>
+
+  <p class="rvr-text-body-sm rvr-text-secondary">
+    Etapa 06 — Infraestrutura visual de gráficos.
+    Sem dados, sem engine gráfica, sem telemetria.
+  </p>
+</div>
+
+
+<!-- THEME ENGINE -->
+
+<div class="lab-block">
+
+<h2 class="rvr-text-h2">
+Theme Engine — Premium Accent System
+</h2>
+
+<div class="lab-row">
+
+<button class="theme-btn"
+onclick="RVR_THEME_ENGINE.setTheme('verde-petroleo')">
+Verde Petróleo
+</button>
+
+<button class="theme-btn"
+onclick="RVR_THEME_ENGINE.setTheme('electric-gold')">
+Electric Gold
+</button>
+
+<button class="theme-btn"
+onclick="RVR_THEME_ENGINE.setTheme('titanium-cyan')">
+Titanium Cyan
+</button>
+
+<button class="theme-btn"
+onclick="RVR_THEME_ENGINE.setTheme('copper-charge')">
+Copper Charge
+</button>
+
+<button class="theme-btn"
+onclick="RVR_THEME_ENGINE.setTheme('amethyst-night')">
+Amethyst Night
+</button>
+
+<button class="theme-btn"
+onclick="RVR_THEME_ENGINE.setTheme('vermelho')">
+Vermelho
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CONTAINER -->
+
+<div class="lab-block">
+
+<h2 class="rvr-text-h2">
+RVRChartContainer + RVRChartTitle
+</h2>
+
+<div class="lab-row">
+
+
+<div class="rvr-chart-container chart-demo">
+
+<div class="rvr-chart-title">
+
+<div class="rvr-chart-title__main">
+Container padrão
+</div>
+
+<div class="rvr-chart-title__subtitle">
+Chart System Foundation
+</div>
+
+</div>
+
+</div>
+
+
+
+<div style="
+background:linear-gradient(
+135deg,
+var(--rvr-accent),
+#1a1a1a
+);
+padding:var(--rvr-space-md);
+border-radius:var(--rvr-radius-lg);
+">
+
+<div class="rvr-chart-container rvr-chart-container--glass chart-demo">
+
+<div class="rvr-chart-title">
+<div class="rvr-chart-title__main">
+Glass Container
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- LEGEND -->
+
+<div class="lab-block">
+
+<h2 class="rvr-text-h2">
+RVRLegend — cores via RVR_CHART_ENGINE
+</h2>
+
+
+<div id="legend-demo"
+class="rvr-legend">
+</div>
+
+
+</div>
+
+
+
+<!-- GRID + AXIS -->
+
+<div class="lab-block">
+
+<h2 class="rvr-text-h2">
+RVRGridLines + RVRAxis
+</h2>
+
+
+<div class="rvr-chart-container chart-demo">
+
+<div class="rvr-chart-gridlines">
+</div>
+
+
+<div class="rvr-chart-axis rvr-chart-axis--x"
+style="
+position:absolute;
+bottom:var(--rvr-space-sm);
+left:var(--rvr-space-lg);
+right:var(--rvr-space-lg);
+">
+
+<span>Jan</span>
+<span>Fev</span>
+<span>Mar</span>
+<span>Abr</span>
+<span>Mai</span>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- TOOLTIP -->
+
+<div class="lab-block">
+
+<h2 class="rvr-text-h2">
+RVRTooltip
+</h2>
+
+
+<div id="tooltip-demo"
+class="rvr-chart-container chart-demo"
+style="cursor:crosshair;">
+
+<div id="tooltip"
+class="rvr-chart-tooltip rvr-chart-tooltip--hidden">
+Valor demonstrativo
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- SERIES -->
+
+<div class="lab-block">
+
+<h2 class="rvr-text-h2">
+RVRSeries + ResizeObserver
+</h2>
+
+
+<div id="series-demo"
+class="rvr-chart-container chart-demo">
+
+<div class="rvr-chart-series">
+</div>
+
+</div>
+
+
+<div id="resize-info"
+class="rvr-text-data">
+Aguardando ResizeObserver...
+</div>
+
+
+</div>
+
+
+
+<script src="/rvr-tokens.js"></script>
+<script src="/rvr-theme-engine.js"></script>
+<script src="/rvr-chart-engine.js"></script>
+
+
+<script>
+
+var labels = [
+"Serie A",
+"Serie B",
+"Serie C",
+"Serie D",
+"Serie E",
+"Serie F"
+];
+
+
+var legend = document.getElementById("legend-demo");
+
+
+labels.forEach(function(label,index){
+
+var item=document.createElement("span");
+item.className="rvr-legend__item";
+
+
+var swatch=document.createElement("span");
+swatch.className="rvr-legend__swatch";
+
+swatch.style.backgroundColor =
+RVR_CHART_ENGINE.getSeriesColor(index);
+
+
+item.appendChild(swatch);
+item.appendChild(
+document.createTextNode(label)
+);
+
+
+legend.appendChild(item);
+
+});
+
+
+
+var tooltipDemo=document.getElementById("tooltip-demo");
+var tooltip=document.getElementById("tooltip");
+
+
+tooltipDemo.addEventListener(
+"mousemove",
+function(e){
+
+var rect=tooltipDemo.getBoundingClientRect();
+
+tooltip.style.left =
+(e.clientX-rect.left+10)+"px";
+
+tooltip.style.top =
+(e.clientY-rect.top+10)+"px";
+
+tooltip.classList.remove(
+"rvr-chart-tooltip--hidden"
+);
+
+});
+
+
+tooltipDemo.addEventListener(
+"mouseleave",
+function(){
+
+tooltip.classList.add(
+"rvr-chart-tooltip--hidden"
+);
+
+});
+
+
+
+RVR_CHART_ENGINE.observeSize(
+document.getElementById("series-demo"),
+function(size){
+
+document.getElementById("resize-info")
+.textContent =
+"ResizeObserver: "
++
+Math.round(size.width)
++
+"x"
++
+Math.round(size.height);
+
+});
+
+</script>
+
+
+</body>
+</html>
