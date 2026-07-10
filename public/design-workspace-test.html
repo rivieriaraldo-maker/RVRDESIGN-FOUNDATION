@@ -52,24 +52,39 @@
 </div>
 
 <div class="lab-block">
+  <h2 class="rvr-text-h2">IKEA Foundation — Etapa 08 (matemática pura, sem drag/snap automático)</h2>
+
+  <p class="rvr-text-caption">RVRSnapSystem.snapToGrid(value, cellSize)</p>
+  <div class="lab-row" style="display:flex; gap:var(--rvr-space-md); margin-bottom:var(--rvr-space-md);">
+    <input class="rvr-input" id="snap-input" type="number" value="53" style="width:100px;">
+    <span class="rvr-text-body">→ snapped: <span id="snap-output" class="rvr-text-data"></span></span>
+  </div>
+
+  <p class="rvr-text-caption">RVRComponentSlots.validateSlotAssignment() — testado contra o Registry real</p>
+  <div id="slot-validation" class="rvr-text-body-sm" style="margin-bottom:var(--rvr-space-md);"></div>
+
+  <p class="rvr-text-caption">RVRSelectionLayer — clique num bloco abaixo para selecionar</p>
+</div>
+
+<div class="lab-block">
   <h2 class="rvr-text-h2">RVRWorkspace + RVRWorkspaceGrid + RVRWorkspaceBlock</h2>
 
   <div class="rvr-workspace">
     <span class="rvr-badge rvr-badge--neutral" id="preset-label" style="align-self:flex-start;">Padrão RVR</span>
 
-    <div class="rvr-grid rvr-grid--col-3" data-rvr-workspace-grid="true">
-      <div class="rvr-workspace-block" style="grid-column: span 6;">
+    <div class="rvr-grid rvr-grid--col-3" data-rvr-workspace-grid="true" id="workspace-grid">
+      <div class="rvr-workspace-block" data-block-id="kpi-vendas" style="grid-column: span 6;" onclick="selectBlock(this)">
         <div class="rvr-card">
           <p class="rvr-text-caption">kpi-vendas · span 6</p>
           <p class="rvr-text-h3">Bloco de exemplo</p>
         </div>
       </div>
-      <div class="rvr-workspace-block" style="grid-column: span 3;">
+      <div class="rvr-workspace-block" data-block-id="indicador-1" style="grid-column: span 3;" onclick="selectBlock(this)">
         <div class="rvr-card">
           <p class="rvr-text-caption">indicador-1 · span 3</p>
         </div>
       </div>
-      <div class="rvr-workspace-block" style="grid-column: span 3;">
+      <div class="rvr-workspace-block" data-block-id="indicador-2" style="grid-column: span 3;" onclick="selectBlock(this)">
         <div class="rvr-card">
           <p class="rvr-text-caption">indicador-2 · span 3</p>
         </div>
@@ -97,7 +112,43 @@
     btn.classList.add('is-active');
     document.getElementById('preset-label').textContent = btn.dataset.preset;
   }
+
+  // ---- RVRSnapSystem demo (mesma lógica de RVRSnapSystem.js, replicada em JS puro pois o lab não tem build) ----
+  function snapToGrid(value, cellSize) {
+    if (!cellSize) return value;
+    return Math.round(value / cellSize) * cellSize;
+  }
+  function updateSnap() {
+    var v = parseFloat(document.getElementById('snap-input').value) || 0;
+    document.getElementById('snap-output').textContent = snapToGrid(v, 8) + ' (cellSize=8)';
+  }
+  document.getElementById('snap-input').addEventListener('input', updateSnap);
+  updateSnap();
+
+  // ---- RVRComponentSlots demo (mesma lógica de RVRComponentSlots.js) ----
+  var REGISTRY_STATUS = { 'rvr-card': 'active', 'rvr-chart': 'foundation', 'rvr-metric-card': 'planned' };
+  function validateSlotAssignment(componentId, accepts) {
+    if (accepts.length > 0 && accepts.indexOf(componentId) === -1) {
+      return { valid: false, reason: '"' + componentId + '" não está na lista de aceitos deste slot.' };
+    }
+    var status = REGISTRY_STATUS[componentId];
+    if (!status) return { valid: false, reason: '"' + componentId + '" não está registrado.' };
+    if (status === 'planned') return { valid: false, reason: '"' + componentId + '" ainda não foi construído (status: planned).' };
+    return { valid: true, reason: null };
+  }
+  var tests = [
+    validateSlotAssignment('rvr-card', ['rvr-chart', 'rvr-card']),
+    validateSlotAssignment('rvr-metric-card', ['rvr-chart', 'rvr-card', 'rvr-metric-card'])
+  ];
+  document.getElementById('slot-validation').innerHTML = tests.map(function (t) {
+    return (t.valid ? '✅ válido' : '❌ ' + t.reason);
+  }).join('<br>');
+
+  // ---- RVRSelectionLayer demo ----
+  function selectBlock(el) {
+    document.querySelectorAll('.rvr-workspace-block').forEach(function (b) { b.classList.remove('rvr-workspace-block--selected'); });
+    el.classList.add('rvr-workspace-block--selected');
+  }
 </script>
 </body>
 </html>
-
