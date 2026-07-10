@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RVRDESIGN LAB — Chart System (Etapa 06)</title>
+
+<!--
+  design-chart-test.html — Etapa 06 (RVRDESIGN-015)
+  Página estática isolada, mesmo padrão de design-test.html. Sem
+  React, sem bundle Vite, sem Portal, sem impacto em produção.
+  Valida apenas as classes CSS do Chart System + utilitários do
+  RVR_CHART_ENGINE (cor por série, responsividade). Nenhum tipo de
+  gráfico (linha/barra/donut) é renderizado aqui — arquitetura apenas.
+  Path sugerido: /public/design-chart-test.html
+-->
+
+<link rel="stylesheet" href="/rvr-tokens.css">
+<link rel="stylesheet" href="/rvr-typography.css">
+<link rel="stylesheet" href="/rvr-motion.css">
+<link rel="stylesheet" href="/rvr-components.css">
+<link rel="stylesheet" href="/rvr-chart.css">
+
+<style>
+  body { background: var(--rvr-bg-primary); color: var(--rvr-text-primary); font-family: var(--rvr-font-interface); padding: var(--rvr-space-xl); }
+  .lab-banner { background: var(--rvr-bg-tertiary); border: 1px solid var(--rvr-border); border-radius: var(--rvr-radius-md); padding: var(--rvr-space-md) var(--rvr-space-lg); margin-bottom: var(--rvr-space-xxl); }
+  .lab-block { margin-bottom: var(--rvr-space-xxl); }
+  .lab-row { display: flex; gap: var(--rvr-space-md); flex-wrap: wrap; align-items: flex-start; margin-bottom: var(--rvr-space-md); }
+  .theme-btn { padding: var(--rvr-space-xs) var(--rvr-space-md); border-radius: var(--rvr-radius-sm); border: 1px solid var(--rvr-border); background: var(--rvr-bg-secondary); color: var(--rvr-text-primary); cursor: pointer; font-family: var(--rvr-font-interface); font-size: var(--rvr-fs-body-sm); }
+</style>
+</head>
+<body>
+
+<div class="lab-banner">
+  <span class="rvr-badge rvr-badge--accent">RVRDESIGN LAB — Chart System</span>
+  <p class="rvr-text-body-sm rvr-text-secondary" style="margin-top: var(--rvr-space-xs);">
+    Ambiente isolado (Etapa 06, RVRDESIGN-015). Arquitetura visual apenas —
+    nenhum gráfico real é renderizado. Sem dados, sem telemetria.
+  </p>
+</div>
+
+<!-- ============ Theme switcher (reaproveita Theme Engine) ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">Theme Aware — troca via RVR_THEME_ENGINE</h2>
+  <div class="lab-row">
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('verde-petroleo')">Verde Petróleo</button>
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('electric-gold')">Electric Gold</button>
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('titanium-cyan')">Titanium Cyan</button>
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('copper-charge')">Copper Charge</button>
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('amethyst-night')">Amethyst Night</button>
+    <button class="theme-btn" onclick="RVR_THEME_ENGINE.setTheme('vermelho')">Vermelho</button>
+  </div>
+</div>
+
+<!-- ============ RVRChartContainer + RVRChartTitle (padrão e glass) ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRChartContainer + RVRChartTitle</h2>
+  <div class="lab-row">
+    <div class="rvr-chart-container" style="width:280px;">
+      <div class="rvr-chart-title">
+        <div class="rvr-chart-title__main">Container padrão</div>
+        <div class="rvr-chart-title__subtitle">Subtítulo de exemplo</div>
+      </div>
+      <div style="height:80px;"></div>
+    </div>
+    <div style="background:linear-gradient(135deg, var(--rvr-accent) 0%, #1a1a1a 100%); padding:var(--rvr-space-md); border-radius:var(--rvr-radius-lg);">
+      <div class="rvr-chart-container rvr-chart-container--glass" style="width:240px;">
+        <div class="rvr-chart-title">
+          <div class="rvr-chart-title__main">Container glass</div>
+        </div>
+        <div style="height:80px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RVRLegend (cor via RVR_CHART_ENGINE) ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRLegend — cor gerada por RVR_CHART_ENGINE.getSeriesColor()</h2>
+  <div id="legend-demo" class="rvr-legend"></div>
+</div>
+
+<!-- ============ RVRGridLines + RVRAxis ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRGridLines + RVRAxis</h2>
+  <div class="rvr-chart-container" style="width:100%; max-width:480px; height:180px;">
+    <div class="rvr-chart-gridlines"></div>
+    <div class="rvr-chart-axis rvr-chart-axis--x" style="position:absolute; bottom:var(--rvr-space-sm); left:var(--rvr-space-lg); right:var(--rvr-space-lg);">
+      <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RVRTooltip ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRTooltip (passe o mouse)</h2>
+  <div class="rvr-chart-container" id="tooltip-demo" style="width:280px; height:100px; cursor:crosshair;">
+    <div class="rvr-chart-tooltip rvr-chart-tooltip--hidden" id="tooltip-el">R$ 0,00</div>
+  </div>
+</div>
+
+<!-- ============ RVRSeries ============ -->
+<div class="lab-block">
+  <h2 class="rvr-text-h2">RVRSeries — wrapper posicional (sem renderização de dados nesta etapa)</h2>
+  <div class="rvr-chart-container" style="width:280px; height:100px;">
+    <div class="rvr-chart-series" id="series-demo"></div>
+  </div>
+</div>
+
+<script src="/rvr-tokens.js"></script>
+<script src="/rvr-theme-engine.js"></script>
+<script src="/rvr-chart-engine.js"></script>
+<script>
+  // RVRLegend demo — 6 itens, cor cíclica via engine (sem hardcode)
+  var legendLabels = ['Simulação A', 'Simulação B', 'Simulação C', 'Simulação D', 'Simulação E', 'Simulação F'];
+  var legendEl = document.getElementById('legend-demo');
+  legendLabels.forEach(function (label, i) {
+    var item = document.createElement('span');
+    item.className = 'rvr-legend__item';
+    var swatch = document.createElement('span');
+    swatch.className = 'rvr-legend__swatch';
+    swatch.style.backgroundColor = RVR_CHART_ENGINE.getSeriesColor(i);
+    item.appendChild(swatch);
+    item.appendChild(document.createTextNode(label));
+    legendEl.appendChild(item);
+  });
+
+  // RVRTooltip demo — posicionamento simples ao mover o mouse
+  var tooltipContainer = document.getElementById('tooltip-demo');
+  var tooltipEl = document.getElementById('tooltip-el');
+  tooltipContainer.addEventListener('mousemove', function (e) {
+    var rect = tooltipContainer.getBoundingClientRect();
+    tooltipEl.style.left = (e.clientX - rect.left + 8) + 'px';
+    tooltipEl.style.top = (e.clientY - rect.top + 8) + 'px';
+    tooltipEl.classList.remove('rvr-chart-tooltip--hidden');
+  });
+  tooltipContainer.addEventListener('mouseleave', function () {
+    tooltipEl.classList.add('rvr-chart-tooltip--hidden');
+  });
+
+  // RVRSeries demo — apenas prova de que observeSize funciona (sem desenhar dados)
+  RVR_CHART_ENGINE.observeSize(document.getElementById('series-demo'), function (size) {
+    document.getElementById('series-demo').title = Math.round(size.width) + 'x' + Math.round(size.height);
+  });
+</script>
+</body>
+    </html>
+
