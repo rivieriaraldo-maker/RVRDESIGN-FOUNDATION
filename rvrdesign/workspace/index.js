@@ -1,15 +1,7 @@
-
-
 /**
  * RVRDESIGN Workspace Engine — barrel export
- * RVRDESIGN FOUNDATION · Etapa 07 + Etapa 08
- * RVRDESIGN-018 / RVRDESIGN-020
- *
- * Path:
- * /rvrdesign/workspace/index.js
+ * RVRDESIGN FOUNDATION
  */
-
-// ---- Etapa 07 — Workspace Engine ----
 
 export { default as RVRWorkspace } from './RVRWorkspace.jsx';
 export { default as RVRWorkspaceGrid } from './RVRWorkspaceGrid.jsx';
@@ -31,9 +23,7 @@ export {
   CONTRACT_STUBS
 } from './RVRWorkspaceContracts.js';
 
-
-// ---- Etapa 08 — IKEA Foundation (RVRDESIGN-020) ----
-
+// ---- IKEA Foundation ----
 export {
   clampSpan,
   getColumnSpanStyle,
@@ -56,3 +46,11 @@ export {
 export {
   useRVRSelectionLayer
 } from './ikea/RVRSelectionLayer.js';
+
+// ---- Persistence Layer ----
+export {
+  saveWorkspaceConfig,
+  loadWorkspaceConfig,
+  restoreDefaultConfig,
+  clearWorkspaceConfig
+} from './persistence/RVRPersistenceLayer.js';
