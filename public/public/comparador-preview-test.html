@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RVRDESIGN LAB — Comparador Veículos Preview</title>
+
+<link rel="stylesheet" href="/rvr-tokens.css">
+<link rel="stylesheet" href="/rvr-typography.css">
+<link rel="stylesheet" href="/rvr-motion.css">
+<link rel="stylesheet" href="/rvr-components.css">
+
+<style>
+
+body {
+  background: var(--rvr-bg-primary);
+  color: var(--rvr-text-primary);
+  font-family: var(--rvr-font-interface);
+  padding: var(--rvr-space-xl);
+}
+
+.lab-banner {
+  background: var(--rvr-bg-tertiary);
+  border: 1px solid var(--rvr-border);
+  border-radius: var(--rvr-radius-md);
+  padding: var(--rvr-space-md);
+  margin-bottom: var(--rvr-space-xl);
+}
+
+.preview-card {
+  background: var(--rvr-bg-secondary);
+  border: 1px solid var(--rvr-border);
+  border-radius: var(--rvr-radius-md);
+  padding: var(--rvr-space-lg);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--rvr-space-md);
+}
+
+.slot {
+  background: var(--rvr-bg-primary);
+  border: 1px solid var(--rvr-border);
+  border-radius: var(--rvr-radius-md);
+  padding: var(--rvr-space-md);
+}
+
+select {
+  width:100%;
+  margin-top:10px;
+}
+
+.action {
+  margin-top:20px;
+}
+
+@media(max-width:700px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="lab-banner">
+
+<span class="rvr-badge rvr-badge--accent">
+RVRDESIGN LAB — Comparador Veículos Preview
+</span>
+
+<p class="rvr-text-body-sm rvr-text-secondary">
+Homologação visual do Face Lift.
+Validação de tokens, cards, grid e componentes Foundation.
+</p>
+
+</div>
+
+
+<div class="preview-card">
+
+<h2 class="rvr-text-h2">
+IOC Comparativo — Seleção de Veículos
+</h2>
+
+
+<div class="grid">
+
+
+<div class="slot">
+
+<div class="rvr-text-caption">
+Veículo A (Eletrificado)
+</div>
+
+<select class="rvr-input">
+<option>Marca...</option>
+<option>BYD</option>
+<option>Toyota</option>
+<option>Volvo</option>
+</select>
+
+
+<select class="rvr-input">
+<option>Modelo...</option>
+<option>Seal</option>
+<option>Corolla Hybrid</option>
+<option>XC40 Recharge</option>
+</select>
+
+
+<div class="rvr-text-data rvr-text-secondary">
+Referência · CM-0001
+</div>
+
+</div>
+
+
+
+<div class="slot">
+
+<div class="rvr-text-caption">
+Veículo B (Comparação)
+</div>
+
+<select class="rvr-input">
+<option>Marca...</option>
+<option>BYD</option>
+<option>Toyota</option>
+<option>Volvo</option>
+</select>
+
+
+<select class="rvr-input">
+<option>Modelo...</option>
+<option>Seal</option>
+<option>Corolla Hybrid</option>
+<option>XC40 Recharge</option>
+</select>
+
+
+<div class="rvr-text-data rvr-text-secondary">
+Benchmark · CM-0002
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="action">
+
+<button class="rvr-button">
+⚡ Iniciar IOC Comparativo
+</button>
+
+</div>
+
+
+</div>
+
+
+</body>
+</html>
