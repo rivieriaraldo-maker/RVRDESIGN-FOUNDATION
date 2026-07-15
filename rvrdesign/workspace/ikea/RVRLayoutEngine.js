@@ -1,4 +1,4 @@
-import { getPreset } from './RVRWorkspacePresets.js';
+import { getPreset } from '../RVRWorkspacePresets.js';
 
 /**
  * RVRLayoutEngine — IKEA Foundation (RVRDESIGN)
@@ -34,4 +34,3 @@ export function computeLayout(blocks, presetKey) {
     })
     .map(({ __originalIndex, ...block }, order) => ({ ...block, order }));
 }
-
