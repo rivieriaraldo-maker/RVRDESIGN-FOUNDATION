@@ -1,4 +1,4 @@
-import { getRegistryEntry } from './RVRWorkspaceRegistry.js';
+import { getRegistryEntry } from '../RVRWorkspaceRegistry.js';
 
 /**
  * RVRComponentSlots — IKEA Foundation (RVRDESIGN)
@@ -28,4 +28,3 @@ export function validateSlotAssignment(componentId, accepts = []) {
 
   return { valid: true, reason: null };
 }
-
