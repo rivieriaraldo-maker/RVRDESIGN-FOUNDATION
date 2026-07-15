@@ -1,11 +1,14 @@
-/**
- * RVRDESIGN Component Library — Base — barrel export
- * RVRDESIGN FOUNDATION · Etapa 04
- * Path sugerido: /platform/rvrdesign/components/index.js
- */
-export { default as RVRButton } from './RVRButton.jsx';
-export { default as RVRCard } from './RVRCard.jsx';
-export { default as RVRBadge } from './RVRBadge.jsx';
-export { default as RVRInput } from './RVRInput.jsx';
-export { default as RVRSection } from './RVRSection.jsx';
-export { default as RVRGrid } from './RVRGrid.jsx';
+// RVRDESIGN FOUNDATION — Component Library Base — barrel
+// RECONSTRUÍDO nesta sessão — o index.js original nunca foi enviado,
+// só listado no Adendo 007. Padrão de re-export nomeado, consistente
+// com o `export default` confirmado em cada um dos 6 arquivos e com
+// o import já hard-coded em ComparadorVeiculosSelector.jsx:
+//   import { RVRButton, RVRCard, RVRGrid } from './rvrdesign/components'
+// Confira contra o index.js real do repositório antes de substituir.
+
+export { default as RVRButton } from './RVRButton';
+export { default as RVRCard } from './RVRCard';
+export { default as RVRGrid } from './RVRGrid';
+export { default as RVRInput } from './RVRInput';
+export { default as RVRBadge } from './RVRBadge';
+export { default as RVRSection } from './RVRSection';
