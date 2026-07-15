@@ -14,7 +14,7 @@
  * para uma futura migração a Supabase (troca de implementação, não
  * de call-site).
  *
- * Path sugerido: /rvrdesign/workspace/ikea/RVRPersistenceLayer.js
+ * Path sugerido: /rvrdesign/workspace/persistence/RVRPersistenceLayer.js
  */
 
 const STORAGE_KEY = 'rvrdesign:workspace:config';
@@ -77,4 +77,4 @@ export async function clearWorkspaceConfig() {
     console.error('[RVRPersistenceLayer] Falha ao limpar:', e);
     return false;
   }
-    }
+}
