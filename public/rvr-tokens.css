@@ -1,107 +1,97 @@
-/*
- * RVR_TOKENS — CSS Custom Properties (RVRDESIGN)
- * RVRDESIGN FOUNDATION · Etapa 01
- * Ver RVRDESIGN-REGISTRO-HOMOLOGACAO.md (RVRDESIGN-001, RVRDESIGN-002)
- *
- * Espelha rvr-tokens.js. Fonte de verdade dos VALORES é o .js;
- * este arquivo é mantido em sincronia manual até existir build step.
- *
- * Path sugerido no repo: /platform/rvrdesign/tokens/rvr-tokens.css
- */
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RVR e-Mobil — Plataforma de Consultoria em Mobilidade Elétrica" />
+  <title>RVR e-Mobil</title>
 
-:root {
-  /* Base fixa — nunca sobrescrita por tema */
-  --rvr-bg-primary: #000000;
-  --rvr-bg-secondary: #0D0D0D;
-  --rvr-bg-tertiary: #1A1A1A;
-  --rvr-text-primary: #FFFFFF;
-  --rvr-text-secondary: #A7A7A7;
-  --rvr-border: rgba(255,255,255,0.08);
+  <!--
+  =========================================================
+  RVR e-MOBIL
 
-  /* Tipografia */
-  --rvr-font-display: 'Tenor Sans', serif;
-  --rvr-font-interface: 'Inter', sans-serif;
-  --rvr-font-data: 'DM Mono', monospace;
+  HTML CANÔNICO OFICIAL
 
-  /* Escala tipográfica — proposta (RVRDESIGN-009), aguardando homologação */
-  --rvr-fs-display: 40px; --rvr-lh-display: 48px;
-  --rvr-fs-h1: 32px; --rvr-lh-h1: 40px;
-  --rvr-fs-h2: 24px; --rvr-lh-h2: 32px;
-  --rvr-fs-h3: 20px; --rvr-lh-h3: 28px;
-  --rvr-fs-h4: 18px; --rvr-lh-h4: 26px;
-  --rvr-fs-body-lg: 16px; --rvr-lh-body-lg: 24px;
-  --rvr-fs-body: 14px; --rvr-lh-body: 20px;
-  --rvr-fs-body-sm: 12px; --rvr-lh-body-sm: 18px;
-  --rvr-fs-caption: 11px; --rvr-lh-caption: 16px;
-  --rvr-fs-data: 14px; --rvr-lh-data: 20px;
-  --rvr-fs-data-lg: 18px; --rvr-lh-data-lg: 24px;
+  Bootstrap Oficial da Plataforma
 
-  --rvr-fw-regular: 400;
-  --rvr-fw-medium: 500;
-  --rvr-fw-semibold: 600;
-  --rvr-fw-bold: 700;
+  Responsável por:
 
-  /* Espaçamento — proposta, aguardando homologação */
-  --rvr-space-xs: 4px;
-  --rvr-space-sm: 8px;
-  --rvr-space-md: 16px;
-  --rvr-space-lg: 24px;
-  --rvr-space-xl: 32px;
-  --rvr-space-xxl: 48px;
-  --rvr-space-xxxl: 64px;
+  • Foundation
+  • Design Tokens
+  • Theme Engine
+  • Motores Vanilla
+  • Bootstrap React
+  • RVR_APP_SHELL
 
-  /* Bordas */
-  --rvr-radius-sm: 4px;
-  --rvr-radius-md: 8px;
-  --rvr-radius-lg: 16px;
-  --rvr-radius-full: 9999px;
+  Este é o único ponto oficial de inicialização da plataforma.
 
-  /* Sombras */
-  --rvr-shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-  --rvr-shadow-md: 0 4px 12px rgba(0,0,0,0.5);
-  --rvr-shadow-lg: 0 12px 32px rgba(0,0,0,0.6);
+  Qualquer alteração deverá respeitar o Estado Canônico e as
+  Diretrizes Oficiais de Engenharia.
 
-  /* Transições */
-  --rvr-transition-fast: 120ms;
-  --rvr-transition-base: 200ms;
-  --rvr-transition-slow: 320ms;
-  --rvr-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  =========================================================
+  -->
+  <!-- Localização oficial: platform/index.html — index.html (raiz) é LEGACY,
+       compatibilidade temporária até remoção futura. -->
 
-  /* Accent padrão (fallback = Verde Petróleo) */
-  --rvr-accent: #004D4D;
-  --rvr-accent-glow: rgba(0,77,77,.35);
-}
+  <!-- ═══ 1. RVRDESIGN FOUNDATION — CSS ═══ -->
+  <link rel="stylesheet" href="/rvr-tokens.css" />
+  <link rel="stylesheet" href="/rvr-components.css" />
+  <link rel="stylesheet" href="/rvr-typography.css" />
+  <link rel="stylesheet" href="/rvr-motion.css" />
+  <link rel="stylesheet" href="/rvr-workspace.css" />
+  <link rel="stylesheet" href="/rvr-chart.css" />
 
-/* ---- Premium Accent System — ativado via [data-rvr-theme] no <html> ---- */
-/* Troca de tema é responsabilidade do Theme Engine (Etapa 02) */
-/* RVRDESIGN-012 (09/07/2026, revisado): Vermelho é 6ª cor nova; Copper Charge revertido ao original */
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--rvr-bg-primary);
+      color: var(--rvr-text-primary);
+      font-family: var(--rvr-font-interface);
+      -webkit-font-smoothing: antialiased;
+    }
+    #rvr-platform-root { min-height: 100vh; }
+  </style>
 
-[data-rvr-theme="verde-petroleo"] {
-  --rvr-accent: #004D4D;
-  --rvr-accent-glow: rgba(0,77,77,.35);
-}
+  <!-- ═══ 2. RVRDESIGN FOUNDATION — Engines Visuais ═══
+       rvr-tokens.js primeiro: rvr-theme-engine.js e rvr-chart-engine.js
+       checam window.RVR_TOKENS ao carregar e abortam se ausente. Não
+       listados explicitamente na Diretriz Complementar (que só cita as
+       5 CSS + theme-engine), incluídos por dependência técnica real —
+       ver aviso no chat.
+  ══════════════════════════════════════════════════════════════════ -->
+  <script src="/rvr-tokens.js"></script>
+  <script src="/rvr-theme-engine.js"></script>
+  <script src="/rvr-chart-engine.js"></script>
+</head>
+<body>
+  <div id="rvr-platform-root"></div>
 
-[data-rvr-theme="electric-gold"] {
-  --rvr-accent: #7A7539;
-  --rvr-accent-glow: rgba(122,117,57,.35);
-}
+  <!-- ══════════════════════════════════════════════════════════════════
+       3. MOTORES VANILLA — ordem obrigatória (Estado Canônico §3)
+       NÃO alterar esta ordem.
+  ══════════════════════════════════════════════════════════════════ -->
+  <script src="/rvr-events.js"></script>
+  <script src="/CATALOGO_MESTRE.js"></script>
+  <script src="/IOCRVR.js"></script>
+  <script src="/RVRPRICE_ENGINE.js"></script>
+  <script src="/RVRPRICE_SUPABASE_PROVIDER.js"></script>
+  <script src="/RVRPRICE_INTELLIGENCE.js"></script>
+  <script src="/RVR_MODULE_REGISTRY.js"></script>
+  <script src="/RVR_BOOTSTRAP.js"></script>
+  <script src="/RVR_ROUTE_MANAGER.js"></script>
+  <script src="/RVR_ORCHESTRATOR_CORE.js"></script>
+  <script src="/RVR_MOTION_ENGINE.js"></script>
+  <script src="/rvrcash.js"></script>
+  <script src="/rvrcash-bridge.js"></script>
+  <script src="/rvr-ocr.js"></script>
 
-[data-rvr-theme="titanium-cyan"] {
-  --rvr-accent: #065E9E;
-  --rvr-accent-glow: rgba(6,94,158,.35);
-}
-
-[data-rvr-theme="copper-charge"] {
-  --rvr-accent: #D76B00;
-  --rvr-accent-glow: rgba(215,107,0,.35);
-}
-
-[data-rvr-theme="amethyst-night"] {
-  --rvr-accent: #1F083C;
-  --rvr-accent-glow: rgba(31,8,60,.35);
-}
-
-[data-rvr-theme="vermelho"] {
-  --rvr-accent: #580305;
-  --rvr-accent-glow: rgba(88,3,5,.35);
-}
+  <!-- ══════════════════════════════════════════════════════════════════
+       4. BUNDLE REACT — entry point da plataforma
+       RVR_APP_SHELL é o ponto único de composição visual (Diretriz de
+       Integração Definitiva). Montado após todos os window.* e a
+       Foundation estarem disponíveis.
+  ══════════════════════════════════════════════════════════════════ -->
+  <script type="module" src="/main.jsx"></script>
+</body>
+</html>
